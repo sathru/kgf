@@ -1,0 +1,23 @@
+job('NodeJS example')
+{
+    scm
+    {
+        git('https://github.com/sathru/jenkins-project.git')
+         {
+             node->node/gitConfigName('DSL User')
+             node/gitConfigEmail('ajehsanthosh28@gmail.com')
+         }
+    }
+    triggers
+    {
+        scm('H/ * * * *')
+    }
+    Wrappers 
+    {
+        nodejs('nodejs')
+    }
+    steps
+    {
+        shell("npm install")
+    }
+}
